@@ -33,12 +33,22 @@
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>1.1.4</version>
+                <configuration>
+                    <targetClasses>
+                        <param>ristinolla.logiikka.*</param>
+                        <param>ristinolla.kayttoliittyma.*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>ristinolla.logiikka.*</param>
+                        <param>ristinolla.kayttoliittyma.*</param>
+                    </targetTests>
+                </configuration>
             </plugin>
             <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.9.1</version>
-    </plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+            </plugin>
         </plugins>
     </build>
      
