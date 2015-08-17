@@ -13,3 +13,7 @@
 **ma 10.07.2015 7h**, Hullu tehokas päivä, ristinolla pelin esiasteen kehittäminen. Nyt ristinolla peli tulostaa kaksiulotteisen taulukon johon käyttäjä voi pistää X merkin haluamaan paikkaan.
 
 **ti 11.07.2015 6.5h**, Nyt ristinollapeliin voi pistää sekä X että 0 merkin haluamaan paikkaan, peli jatkuu toistaiseksi ikuisesti. Testien kehittelyä.
+
+**pe 14.07.2015 6h**, Tuomariluokan hahmottelua sekä testien tekemistä kyseiselle luokalle.
+
+**ma 17.07.2015 5h**, Tuomariluokan toteuttaminen, testien lisääminen tuomariluokkaa, käyttöliittymän hiomista.
