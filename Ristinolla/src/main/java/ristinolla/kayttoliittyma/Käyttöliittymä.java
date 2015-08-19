@@ -16,20 +16,19 @@ public class Käyttöliittymä {
     public void kaynnista() {
         alkuteksti();
         luoRuudukko();
+        logic.luoTuomari(logic.getKirjanpito(), logic.getRuudukko());
         while (logic.jatkuukoPeli()) {
-            int xKoordinaatti = kysyKokonaisluku("Anna X koordinaatti: ", 0, logic.getRuudukonLeveys() - 1);
-            int yKoordinaatti = kysyKokonaisluku("Anna Y koordinaatti: ", 0, logic.getRuudukonKorkeus() - 1);
+            int xKoordinaatti = kysyKokonaisluku("Anna X koordinaatti: ", 0, logic.getRuudukonSivunPituus() - 1);
+            int yKoordinaatti = kysyKokonaisluku("Anna Y koordinaatti: ", 0, logic.getRuudukonSivunPituus() - 1);
             logic.teeSiirto(logic.kenenVuoro(), xKoordinaatti, yKoordinaatti);
             logic.tulostaRuudukko();
-
         }
-
+        System.out.println("GAME OVER. WINNER IS " + logic.kenenVuoro());
     }
 
     private void luoRuudukko() {
-        int korkeus = kysyKokonaisluku("Anna korkeus (min 20): ", 20, 100);
-        int leveys = kysyKokonaisluku("Anna leveys (min 20): ", 20, 100);
-        logic.luoRuudukko(korkeus, leveys);
+        int sivunPituus = kysyKokonaisluku("Anna ruudukon sivun pituus: ", 20, 100);
+        logic.luoRuudukko(sivunPituus);
     }
 
     private void alkuteksti() {
@@ -46,12 +45,15 @@ public class Käyttöliittymä {
             if (luku >= min && luku <= max) {
                 break;
             } else if (luku < min) {
-                System.out.println("Luku minimissään " + min + "!");
+                System.out.println("Syötettävä luku minimissään " + min + "!");
             } else if (luku > max) {
-                System.out.println("Luku maksimissaan " + max + "!");
+                System.out.println("Syötettävä luku maksimissaan " + max + "!");
             }
         }
 
         return luku;
     }
+    
+    
+    
 }

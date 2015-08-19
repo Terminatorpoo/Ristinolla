@@ -10,12 +10,10 @@ public class Ohjelmistologiikka {
     private Ruudukko ruudukko;
     private boolean jatkuukoPeli;
     private Kirjanpito kirjanpito;
-    private int ruudukonKorkeus;
-    private int ruudukonLeveys;
+    private int ruudukonSivunPituus;
     
+    private Tuomari tuomari;
     
-
-
     public Ohjelmistologiikka() {
         this.X = new Pelimerkki("X");
         this.Y = new Pelimerkki("Y");
@@ -23,42 +21,16 @@ public class Ohjelmistologiikka {
         this.pelaaja2 = new Pelaaja("pelaaja2", new Pelimerkki("O"), false);
         this.jatkuukoPeli = true;
         this.kirjanpito = new Kirjanpito();
-        this.ruudukonKorkeus = 0;
-        this.ruudukonLeveys = 0;
-    }
-
-    public int getRuudukonKorkeus() {
-        return ruudukonKorkeus;
-    }
-
-    public Pelimerkki getX() {
-        return X;
-    }
-
-    public Pelaaja getPelaaja1() {
-        return pelaaja1;
-    }
-
-    public Pelaaja getPelaaja2() {
-        return pelaaja2;
-    }
-
-    public Kirjanpito getKirjanpito() {
-        return kirjanpito;
+        this.ruudukonSivunPituus = 0;
     }
     
-    
-
-    public int getRuudukonLeveys() {
-        return ruudukonLeveys;
+    public void luoTuomari(Kirjanpito kirjanpito, Ruudukko ruudukko){
+         this.tuomari = new Tuomari(kirjanpito, ruudukko);
     }
-    
 
-
-    public void luoRuudukko(int korkeus, int leveys) {
-        ruudukonKorkeus = korkeus;
-        ruudukonLeveys = leveys;
-        ruudukko = new Ruudukko(korkeus, leveys);
+    public void luoRuudukko(int sivunPituus) {
+        ruudukonSivunPituus = sivunPituus;
+        ruudukko = new Ruudukko(sivunPituus);
     }
     
     public void tulostaRuudukko() {
@@ -89,15 +61,51 @@ public class Ohjelmistologiikka {
 
         }
     
-//    TÄMÄ METODI VIIMEISTELLÄÄN MYÖHEMMIN
+
     public boolean jatkuukoPeli() {
         System.out.println(kenenVuoro().getNimi() + ":n vuoro");
-        return jatkuukoPeli;
+        return tuomari.jatkuukoPeli();
     }
 
     public boolean onkoSiirtoLaillinen(int xKoordinaatti, int yKoordinaatti) {
-        return !kirjanpito.sisaltaakoAvainta(xKoordinaatti, yKoordinaatti);
+        return tuomari.onkoSiirtoLaillinen(xKoordinaatti, yKoordinaatti);
     }
+    
+    //GETTERIT SETTERIT SUN MUUT HÖPÖ HÖPÖ JUTUT
+    public Tuomari getTuomari() {
+        return tuomari;
+    }
+    
+    public int getRuudukonSivunPituus() {
+        return ruudukonSivunPituus;
+    }
+
+    public Pelimerkki getX() {
+        return X;
+    }
+
+    public Pelimerkki getY() {
+        return Y;
+    }
+    
+    
+
+    public Pelaaja getPelaaja1() {
+        return pelaaja1;
+    }
+
+    public Pelaaja getPelaaja2() {
+        return pelaaja2;
+    }
+
+    public Kirjanpito getKirjanpito() {
+        return kirjanpito;
+    }
+
+    public Ruudukko getRuudukko() {
+        return ruudukko;
+    }
+    
     }
 
 

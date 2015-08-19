@@ -29,6 +29,11 @@ public class Pelaaja {
     public Pelimerkki getMerkki() {
         return merkki;
     }
+
+    @Override
+    public String toString() {
+        return  nimi;
+    }
     
     
     

@@ -31,6 +31,7 @@ public class Kirjanpito {
     }
     
     
+    
     public Pelimerkki mikaMerkkiRuudussa(int X, int Y) {
         for (Koordinaatti xy : siirrot.keySet()) {
             if(xy.getX() == X && xy.getY() == Y) {
