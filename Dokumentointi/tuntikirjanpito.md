@@ -17,3 +17,5 @@
 **pe 14.07.2015 6h**, Tuomariluokan hahmottelua sekä testien tekemistä kyseiselle luokalle.
 
 **ma 17.07.2015 5h**, Tuomariluokan toteuttaminen, testien lisääminen tuomariluokkaa, käyttöliittymän hiomista.
+
+**ke 19.07.2015 7h**, Graaffisen käyttiksen suunittelua. Ruudukkoa tehtäessä käyttäjältä kysytään nyt vain sivin pituus (ja muodostetaan neliön muotoinen ruudukko).
