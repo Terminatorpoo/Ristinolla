@@ -68,7 +68,7 @@ public class Ohjelmistologiikka {
     }
 
     public boolean onkoSiirtoLaillinen(int xKoordinaatti, int yKoordinaatti) {
-        return tuomari.onkoSiirtoLaillinen(xKoordinaatti, yKoordinaatti);
+        return !kirjanpito.sisaltaakoAvainta(xKoordinaatti, yKoordinaatti);
     }
     
     //GETTERIT SETTERIT SUN MUUT HÖPÖ HÖPÖ JUTUT

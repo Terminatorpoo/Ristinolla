@@ -10,9 +10,7 @@ public class Tuomari {
         this.ruudukko = ruudukko;
     }
 
-    public boolean onkoSiirtoLaillinen(int xKoordinaatti, int yKoordinaatti) {
-        return !kirjanpito.sisaltaakoAvainta(xKoordinaatti, yKoordinaatti);
-    }
+   
     
     public boolean jatkuukoPeli() {
         return !(onkoViisiPerakkain("vertikaalinen") || onkoViisiPerakkain("horisontaalinen") || onkoViisiPerakkain("nousevasti_viistoon") || onkoViisiPerakkain("laskevasti_viistoon"));

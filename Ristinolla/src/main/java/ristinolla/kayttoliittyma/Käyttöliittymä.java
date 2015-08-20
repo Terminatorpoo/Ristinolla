@@ -2,18 +2,22 @@ package ristinolla.kayttoliittyma;
 
 import java.util.Scanner;
 import ristinolla.logiikka.*;
+import javax.swing.SwingUtilities;
 
 public class Käyttöliittymä {
 
     Scanner lukija;
     Ohjelmistologiikka logic;
+    GUI kayttis;
 
     public Käyttöliittymä() {
         this.lukija = new Scanner(System.in);
         this.logic = new Ohjelmistologiikka();
+        this.kayttis = new GUI();
     }
 
     public void kaynnista() {
+        SwingUtilities.invokeLater(kayttis);
         alkuteksti();
         luoRuudukko();
         logic.luoTuomari(logic.getKirjanpito(), logic.getRuudukko());
@@ -41,7 +45,12 @@ public class Käyttöliittymä {
         int luku = 0;
         while (true) {
             System.out.print(viesti);
+            try {
             luku = Integer.parseInt(lukija.nextLine());
+            } catch (Exception e){
+                System.out.println("Et syöttänyt kunnollista lukua. Apina.");
+                continue;
+            }
             if (luku >= min && luku <= max) {
                 break;
             } else if (luku < min) {
