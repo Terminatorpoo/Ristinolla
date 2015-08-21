@@ -2,6 +2,7 @@
 package ristinolla.logiikka;
 
 
+
 public class Koordinaatti {
     private int X;
     private int Y;
@@ -10,7 +11,6 @@ public class Koordinaatti {
     public Koordinaatti(int xKoordinaatti, int yKoordinaatti) {
         this.X = xKoordinaatti;
         this.Y = yKoordinaatti;
-        
     }
 
     public int getX() {
@@ -51,8 +51,6 @@ public class Koordinaatti {
     public String toString() {
         return "Koordinaatti{" + "X=" + X + ", Y=" + Y + '}';
     }
-    
-    
 
     
     

@@ -1,26 +1,36 @@
 package ristinolla.kayttoliittyma;
 
 import java.util.Scanner;
-import ristinolla.logiikka.*;
 import javax.swing.SwingUtilities;
+import ristinolla.logiikka.*;
+
 
 public class Käyttöliittymä {
 
-    Scanner lukija;
-    Ohjelmistologiikka logic;
-    GUI kayttis;
+    private Scanner lukija;
+    private Ohjelmistologiikka logic;
+    private GraafinenKayttoliittyma gui;
+    
 
     public Käyttöliittymä() {
         this.lukija = new Scanner(System.in);
         this.logic = new Ohjelmistologiikka();
-        this.kayttis = new GUI();
+        this.gui = new GraafinenKayttoliittyma(logic);
+        
     }
-
+    
+    
+    
     public void kaynnista() {
-        SwingUtilities.invokeLater(kayttis);
+        
         alkuteksti();
-        luoRuudukko();
+        logic.luoRuudukko(25);
         logic.luoTuomari(logic.getKirjanpito(), logic.getRuudukko());
+        logic.tulostaRuudukko();
+        
+        
+        SwingUtilities.invokeLater(gui);
+        
         while (logic.jatkuukoPeli()) {
             int xKoordinaatti = kysyKokonaisluku("Anna X koordinaatti: ", 0, logic.getRuudukonSivunPituus() - 1);
             int yKoordinaatti = kysyKokonaisluku("Anna Y koordinaatti: ", 0, logic.getRuudukonSivunPituus() - 1);
@@ -30,10 +40,11 @@ public class Käyttöliittymä {
         System.out.println("GAME OVER. WINNER IS " + logic.kenenVuoro());
     }
 
-    private void luoRuudukko() {
-        int sivunPituus = kysyKokonaisluku("Anna ruudukon sivun pituus: ", 20, 100);
-        logic.luoRuudukko(sivunPituus);
-    }
+//    private void luoRuudukko() {
+//        Tähän jätetään mahdollisuus kysyä käyttäjältä ruudukon kokoa.
+//        int sivunPituus = kysyKokonaisluku("Anna ruudukon sivun pituus: ", 20, 100);
+//        logic.luoRuudukko(sivunPituus);
+//    }
 
     private void alkuteksti() {
         System.out.println("Tervetuloa ristinolla-peliin.");
@@ -62,6 +73,11 @@ public class Käyttöliittymä {
 
         return luku;
     }
+    
+    
+
+    
+    
     
     
     

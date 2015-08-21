@@ -1,5 +1,10 @@
 package ristinolla.logiikka;
 
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.SwingUtilities;
+import ristinolla.kayttoliittyma.GraafinenKayttoliittyma;
+
 
 
 public class Ohjelmistologiikka {
@@ -71,6 +76,9 @@ public class Ohjelmistologiikka {
         return !kirjanpito.sisaltaakoAvainta(xKoordinaatti, yKoordinaatti);
     }
     
+    
+    
+    
     //GETTERIT SETTERIT SUN MUUT HÖPÖ HÖPÖ JUTUT
     public Tuomari getTuomari() {
         return tuomari;
@@ -105,6 +113,8 @@ public class Ohjelmistologiikka {
     public Ruudukko getRuudukko() {
         return ruudukko;
     }
+
+    
     
     }
 

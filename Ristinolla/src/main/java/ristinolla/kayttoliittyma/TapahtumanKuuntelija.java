@@ -8,19 +8,17 @@ import javax.swing.JTextField;
 
 public class TapahtumanKuuntelija implements ActionListener {
 
-    private JTextField lahde;
-    private JTextField kohde;
-    private JButton plus;
-    private JButton miinus;
+    
+    private JButton nappi;
+    private GraafinenKayttoliittyma gui;
     
 
-    public TapahtumanKuuntelija(JTextField lahde, JTextField kohde, JButton plus, JButton miinus) {
-        
-        
+    public TapahtumanKuuntelija(GraafinenKayttoliittyma gui) {
+       this.gui = gui;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        gui.getLogic().teeSiirto(gui.getLogic().kenenVuoro(), , yKoordinaatti);
     }
 }
