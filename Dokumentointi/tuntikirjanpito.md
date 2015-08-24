@@ -19,3 +19,7 @@
 **ma 17.07.2015 5h**, Tuomariluokan toteuttaminen, testien lisääminen tuomariluokkaa, käyttöliittymän hiomista.
 
 **ke 19.07.2015 7h**, Graaffisen käyttiksen suunittelua. Ruudukkoa tehtäessä käyttäjältä kysytään nyt vain sivin pituus (ja muodostetaan neliön muotoinen ruudukko).
+
+**to 20.07.2015 4h**, Graaffisen käyttiksen toteutuksen aloittaminen. Haastavampaa mitä oletin :S
+
+**pe 21.07.2015 7h**, Graaffisen käyttöliittymän kehittelyä. Ongelmia toiminnallisuuden lisäämisessä JButtoneihin.
