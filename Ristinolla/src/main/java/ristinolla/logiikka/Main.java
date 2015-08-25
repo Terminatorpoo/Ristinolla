@@ -5,19 +5,8 @@ import ristinolla.kayttoliittyma.*;
 public class Main {
 
     public static void main(String[] args) {
-
-        
-
-        
-        Käyttöliittymä kayttis = new Käyttöliittymä();
-
+        Ohjelmistologiikka logic = new Ohjelmistologiikka();
+        GraafinenKayttoliittyma kayttis = new GraafinenKayttoliittyma(logic);
         kayttis.kaynnista();
-
-        
-        
-        
-        
-        
     }
-
 }

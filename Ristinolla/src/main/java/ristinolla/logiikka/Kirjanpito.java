@@ -21,13 +21,21 @@ public class Kirjanpito {
         return siirrot;
     }
     
-    public boolean sisaltaakoAvainta(int X, int Y){
+    public boolean sisaltaakoPelimerkkia(int X, int Y){
         for (Koordinaatti xy : siirrot.keySet()) {
             if(xy.getX() == X && xy.getY() == Y) {
                 return true;
             }
         }
         return false;
+    }
+    
+    public String tulostaSiirrot() {
+        String tehdytSiirrot = "";
+        for (Koordinaatti xy : siirrot.keySet()) {
+            tehdytSiirrot += "X: " + xy.getX() + " Y: " + xy.getY() + "\n";
+        }
+        return tehdytSiirrot;
     }
     
     
@@ -39,6 +47,10 @@ public class Kirjanpito {
             }
         }
         return null;
+    }
+    
+    public void tyhjennaKirjanpito() {
+        siirrot.clear();
     }
     
 }

@@ -41,7 +41,7 @@ public class KirjanpitoTest {
     public void sisaltaaAvaimen(){
         Koordinaatti xy = new Koordinaatti (1, 1);
         kirjanpito.annaSiirto(xy, new Pelimerkki("X"));
-        assertEquals(true, kirjanpito.sisaltaakoAvainta(1, 1));
+        assertEquals(true, kirjanpito.sisaltaakoPelimerkkia(1, 1));
         
     }
     
@@ -49,6 +49,6 @@ public class KirjanpitoTest {
     public void eiSisallaAvainta(){
         Koordinaatti xy = new Koordinaatti (1, 1);
         kirjanpito.annaSiirto(xy, new Pelimerkki("X"));
-        assertEquals(false, kirjanpito.sisaltaakoAvainta(2, 2));
+        assertEquals(false, kirjanpito.sisaltaakoPelimerkkia(2, 2));
     }
 }

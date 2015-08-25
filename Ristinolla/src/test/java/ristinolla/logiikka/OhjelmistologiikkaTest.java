@@ -62,7 +62,7 @@ public class OhjelmistologiikkaTest {
      @Test
      public void siirtoTallentuuKirjanpitoon(){
          logics.teeSiirto(logics.getPelaaja1(), 1, 1);
-         assertEquals(true, logics.getKirjanpito().sisaltaakoAvainta(1, 1));
+         assertEquals(true, logics.getKirjanpito().sisaltaakoPelimerkkia(1, 1));
      }
      
      @Test

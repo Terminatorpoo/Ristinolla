@@ -26,7 +26,7 @@ public class TuomariTest {
     
     @Before
     public void setUp() {
-        logic.luoRuudukko(20);
+        logic.luoRuudukko(25);
         logic.luoTuomari(logic.getKirjanpito(), logic.getRuudukko());
     }
     
@@ -104,9 +104,9 @@ public class TuomariTest {
          Koordinaatti d = new Koordinaatti (16, 19);
          Koordinaatti e = new Koordinaatti (15, 19);
          logic.getKirjanpito().annaSiirto(a, logic.getX());
-         logic.getKirjanpito().annaSiirto(b, logic.getY());
+         logic.getKirjanpito().annaSiirto(b, logic.getO());
          logic.getKirjanpito().annaSiirto(c, logic.getX());
-         logic.getKirjanpito().annaSiirto(d, logic.getY());
+         logic.getKirjanpito().annaSiirto(d, logic.getO());
          logic.getKirjanpito().annaSiirto(e, logic.getX());
          assertEquals(true, logic.getTuomari().jatkuukoPeli());
      }
@@ -120,8 +120,8 @@ public class TuomariTest {
          Koordinaatti e = new Koordinaatti (19, 15);
          logic.getKirjanpito().annaSiirto(a, logic.getX());
          logic.getKirjanpito().annaSiirto(b, logic.getX());
-         logic.getKirjanpito().annaSiirto(c, logic.getY());
-         logic.getKirjanpito().annaSiirto(d, logic.getY());
+         logic.getKirjanpito().annaSiirto(c, logic.getO());
+         logic.getKirjanpito().annaSiirto(d, logic.getO());
          logic.getKirjanpito().annaSiirto(e, logic.getX());
          assertEquals(true, logic.getTuomari().jatkuukoPeli());
      }
@@ -207,12 +207,14 @@ public class TuomariTest {
          Koordinaatti c = new Koordinaatti(11, 2);
          Koordinaatti d = new Koordinaatti(12, 3);
          Koordinaatti e = new Koordinaatti(13, 4);
-         logic.getKirjanpito().annaSiirto(a, logic.getX());
-         logic.getKirjanpito().annaSiirto(b, logic.getX());
-         logic.getKirjanpito().annaSiirto(c, logic.getX());
-         logic.getKirjanpito().annaSiirto(d, logic.getX());
-         logic.getKirjanpito().annaSiirto(e, logic.getX());
+         logic.getKirjanpito().annaSiirto(a, logic.getO());
+         logic.getKirjanpito().annaSiirto(b, logic.getO());
+         logic.getKirjanpito().annaSiirto(c, logic.getO());
+         logic.getKirjanpito().annaSiirto(d, logic.getO());
+         logic.getKirjanpito().annaSiirto(e, logic.getO());
          assertEquals(false, logic.getTuomari().jatkuukoPeli());
      }
+     
+     
      
 }

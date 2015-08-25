@@ -1,5 +1,6 @@
 package ristinolla.logiikka;
 
+import ristinolla.kayttoliittyma.Ruudukko;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
@@ -9,7 +10,7 @@ import ristinolla.kayttoliittyma.GraafinenKayttoliittyma;
 
 public class Ohjelmistologiikka {
     private Pelimerkki X;
-    private Pelimerkki Y;
+    private Pelimerkki O;
     private Pelaaja pelaaja1;
     private Pelaaja pelaaja2;
     private Ruudukko ruudukko;
@@ -21,9 +22,9 @@ public class Ohjelmistologiikka {
     
     public Ohjelmistologiikka() {
         this.X = new Pelimerkki("X");
-        this.Y = new Pelimerkki("Y");
-        this.pelaaja1 = new Pelaaja("pelaaja1", new Pelimerkki("X"), true);
-        this.pelaaja2 = new Pelaaja("pelaaja2", new Pelimerkki("O"), false);
+        this.O = new Pelimerkki("O");
+        this.pelaaja1 = new Pelaaja("pelaaja1", X, true);
+        this.pelaaja2 = new Pelaaja("pelaaja2", O, false);
         this.jatkuukoPeli = true;
         this.kirjanpito = new Kirjanpito();
         this.ruudukonSivunPituus = 0;
@@ -35,12 +36,16 @@ public class Ohjelmistologiikka {
 
     public void luoRuudukko(int sivunPituus) {
         ruudukonSivunPituus = sivunPituus;
-        ruudukko = new Ruudukko(sivunPituus);
+        this.ruudukko = new Ruudukko(sivunPituus);
     }
     
-    public void tulostaRuudukko() {
-        ruudukko.tulostaRuudukko(kirjanpito);
+    public void uusiPeli(){
+       kirjanpito.tyhjennaKirjanpito();
+       ruudukko.tyhjennaRuudukko();
+       
     }
+        
+    
     
     public void vuoroVaihtuu(){
         pelaaja1.vuoroVaihtuu();
@@ -55,25 +60,24 @@ public class Ohjelmistologiikka {
         }
     }
     
-    public void teeSiirto(Pelaaja pelaaja, int xKoordinaatti, int yKoordinaatti) {
+    public boolean teeSiirto(Pelaaja pelaaja, int xKoordinaatti, int yKoordinaatti) {
             if(!onkoSiirtoLaillinen(xKoordinaatti, yKoordinaatti)){
                 System.out.println("Laiton siirto!");
-                return;
+                return false;
             }
             Koordinaatti koordinaatti = new Koordinaatti(xKoordinaatti, yKoordinaatti);
             kirjanpito.annaSiirto(koordinaatti, pelaaja.getMerkki());
             vuoroVaihtuu();
-
+            return true;
         }
     
 
     public boolean jatkuukoPeli() {
-        System.out.println(kenenVuoro().getNimi() + ":n vuoro");
         return tuomari.jatkuukoPeli();
     }
 
     public boolean onkoSiirtoLaillinen(int xKoordinaatti, int yKoordinaatti) {
-        return !kirjanpito.sisaltaakoAvainta(xKoordinaatti, yKoordinaatti);
+        return !kirjanpito.sisaltaakoPelimerkkia(xKoordinaatti, yKoordinaatti);
     }
     
     
@@ -92,8 +96,8 @@ public class Ohjelmistologiikka {
         return X;
     }
 
-    public Pelimerkki getY() {
-        return Y;
+    public Pelimerkki getO() {
+        return O;
     }
     
     
