@@ -24,30 +24,12 @@ public class Ruudukko {
             }
         }
     }
-    
-    
-    public void tyhjennaRuudukko(){
+
+    public void tyhjennaRuudukko() {
         for (Nappi nappi1 : napit) {
             nappi1.getRuutu().setText("");
         }
     }
-
-
-//    private void merkkienLisaaminen(Kirjanpito kirjanpito) {
-//        for(Koordinaatti koordinaatti : kirjanpito.getSiirrot().keySet()) {
-//            //lisätään merkki tekstikäyttöliitymään
-//            ruudukko[koordinaatti.getX()][koordinaatti.getY()] = "[" + kirjanpito.getSiirrot().get(koordinaatti).getMerkki() + "]";
-//            //lisätään merkki graaffiseen käyttöliittymään
-//            for (Nappi nappi : napit) {
-//                if(nappi.getX() == koordinaatti.getX() && nappi.getY() == koordinaatti.getY()){
-//                    nappi.muutaNapinTekstia(kirjanpito.getSiirrot().get(koordinaatti).getMerkki());
-//                }
-//            }
-//            
-//        }
-//    }
-
-    
 
     public int getSivunPituus() {
         return sivunPituus;
@@ -56,12 +38,5 @@ public class Ruudukko {
     public ArrayList<Nappi> getNapit() {
         return napit;
     }
-    
-    
 
-    
-    
-    
 }
-
-

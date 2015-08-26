@@ -18,7 +18,7 @@ public class GraafinenKayttoliittyma implements Runnable {
     private JFrame frame;
     private Ohjelmistologiikka logic;
     private RuudukonKuuntelija kuuntelija1;
-    private ValikkorivinKuuntelija kuuntelija2; 
+    private ValikkorivinKuuntelija kuuntelija2;
     private int x;
     private int y;
 
@@ -35,15 +35,15 @@ public class GraafinenKayttoliittyma implements Runnable {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         frame.setLayout(new BorderLayout());
-        
+
         JPanel panel1 = new JPanel();
         luoRuudukko(panel1);
         JPanel panel2 = new JPanel();
         luoValikkorivi(panel2);
         frame.getContentPane().add(panel1, BorderLayout.CENTER);
-        
+
         frame.getContentPane().add(panel2, BorderLayout.NORTH);
-        
+
         frame.pack();
         frame.setVisible(true);
     }
@@ -59,10 +59,10 @@ public class GraafinenKayttoliittyma implements Runnable {
         }
 
     }
-    
+
     private void luoValikkorivi(Container container) {
         container.setLayout(new FlowLayout());
-        
+
         JButton lopeta = new JButton("Lopeta");
         JButton uusiPeli = new JButton("Uusi peli");
         this.kuuntelija2 = new ValikkorivinKuuntelija(this, lopeta, uusiPeli);
@@ -70,7 +70,7 @@ public class GraafinenKayttoliittyma implements Runnable {
         uusiPeli.addActionListener(kuuntelija2);
         container.add(uusiPeli);
         container.add(lopeta);
-        
+
     }
 
     public JFrame getFrame() {
@@ -92,14 +92,6 @@ public class GraafinenKayttoliittyma implements Runnable {
         return logic.teeSiirto(logic.kenenVuoro(), xKoordinaatti, yKoordinaatti);
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
     public void lopetaPeli() {
         System.out.println("Peli loppu. Voittaja on " + logic.kenenVuoro());
 
@@ -107,7 +99,7 @@ public class GraafinenKayttoliittyma implements Runnable {
             nappi.getRuutu().setEnabled(false);
         }
     }
-    
+
     public void suljeOhjelma() {
         System.exit(0);
     }
@@ -117,7 +109,7 @@ public class GraafinenKayttoliittyma implements Runnable {
         for (Nappi nappi : logic.getRuudukko().getNapit()) {
             nappi.getRuutu().setEnabled(true);
         }
-        
+
     }
 
 }

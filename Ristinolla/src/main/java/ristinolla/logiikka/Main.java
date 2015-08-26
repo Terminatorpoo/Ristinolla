@@ -1,6 +1,6 @@
 package ristinolla.logiikka;
-import ristinolla.kayttoliittyma.*;
 
+import ristinolla.kayttoliittyma.*;
 
 public class Main {
 

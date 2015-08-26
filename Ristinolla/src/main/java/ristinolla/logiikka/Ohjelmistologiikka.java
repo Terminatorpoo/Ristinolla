@@ -1,14 +1,9 @@
 package ristinolla.logiikka;
 
 import ristinolla.kayttoliittyma.Ruudukko;
-import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.SwingUtilities;
-import ristinolla.kayttoliittyma.GraafinenKayttoliittyma;
-
-
 
 public class Ohjelmistologiikka {
+
     private Pelimerkki X;
     private Pelimerkki O;
     private Pelaaja pelaaja1;
@@ -17,9 +12,9 @@ public class Ohjelmistologiikka {
     private boolean jatkuukoPeli;
     private Kirjanpito kirjanpito;
     private int ruudukonSivunPituus;
-    
+
     private Tuomari tuomari;
-    
+
     public Ohjelmistologiikka() {
         this.X = new Pelimerkki("X");
         this.O = new Pelimerkki("O");
@@ -29,48 +24,44 @@ public class Ohjelmistologiikka {
         this.kirjanpito = new Kirjanpito();
         this.ruudukonSivunPituus = 0;
     }
-    
-    public void luoTuomari(Kirjanpito kirjanpito, Ruudukko ruudukko){
-         this.tuomari = new Tuomari(kirjanpito, ruudukko);
+
+    public void luoTuomari(Kirjanpito kirjanpito, Ruudukko ruudukko) {
+        this.tuomari = new Tuomari(kirjanpito, ruudukko);
     }
 
     public void luoRuudukko(int sivunPituus) {
         ruudukonSivunPituus = sivunPituus;
         this.ruudukko = new Ruudukko(sivunPituus);
     }
-    
-    public void uusiPeli(){
-       kirjanpito.tyhjennaKirjanpito();
-       ruudukko.tyhjennaRuudukko();
-       
+
+    public void uusiPeli() {
+        kirjanpito.tyhjennaKirjanpito();
+        ruudukko.tyhjennaRuudukko();
     }
-        
-    
-    
-    public void vuoroVaihtuu(){
+
+    public void vuoroVaihtuu() {
         pelaaja1.vuoroVaihtuu();
         pelaaja2.vuoroVaihtuu();
     }
-    
-    public Pelaaja kenenVuoro(){
-        if(pelaaja1.isOnkoMinunVuoro()){
+
+    public Pelaaja kenenVuoro() {
+        if (pelaaja1.isOnkoMinunVuoro()) {
             return pelaaja1;
-        }else{
+        } else {
             return pelaaja2;
         }
     }
-    
+
     public boolean teeSiirto(Pelaaja pelaaja, int xKoordinaatti, int yKoordinaatti) {
-            if(!onkoSiirtoLaillinen(xKoordinaatti, yKoordinaatti)){
-                System.out.println("Laiton siirto!");
-                return false;
-            }
-            Koordinaatti koordinaatti = new Koordinaatti(xKoordinaatti, yKoordinaatti);
-            kirjanpito.annaSiirto(koordinaatti, pelaaja.getMerkki());
-            vuoroVaihtuu();
-            return true;
+        if (!onkoSiirtoLaillinen(xKoordinaatti, yKoordinaatti)) {
+            System.out.println("Laiton siirto!");
+            return false;
         }
-    
+        Koordinaatti koordinaatti = new Koordinaatti(xKoordinaatti, yKoordinaatti);
+        kirjanpito.annaSiirto(koordinaatti, pelaaja.getMerkki());
+        vuoroVaihtuu();
+        return true;
+    }
 
     public boolean jatkuukoPeli() {
         return tuomari.jatkuukoPeli();
@@ -79,19 +70,16 @@ public class Ohjelmistologiikka {
     public boolean onkoSiirtoLaillinen(int xKoordinaatti, int yKoordinaatti) {
         return !kirjanpito.sisaltaakoPelimerkkia(xKoordinaatti, yKoordinaatti);
     }
-    
-    
-    
-    
-    //GETTERIT SETTERIT SUN MUUT HÖPÖ HÖPÖ JUTUT
+
     public Tuomari getTuomari() {
         return tuomari;
     }
-    
+
     public int getRuudukonSivunPituus() {
         return ruudukonSivunPituus;
     }
 
+//    GetX() ja Get0() metodit testejä varten (getX() ja getY() metodit löytyvät myös pelaaja luokasta).
     public Pelimerkki getX() {
         return X;
     }
@@ -99,8 +87,6 @@ public class Ohjelmistologiikka {
     public Pelimerkki getO() {
         return O;
     }
-    
-    
 
     public Pelaaja getPelaaja1() {
         return pelaaja1;
@@ -118,8 +104,4 @@ public class Ohjelmistologiikka {
         return ruudukko;
     }
 
-    
-    
-    }
-
-
+}

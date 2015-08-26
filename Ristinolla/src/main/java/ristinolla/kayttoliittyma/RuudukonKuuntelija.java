@@ -20,16 +20,11 @@ public class RuudukonKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        System.out.println("");
-
-        
         if (kayttis.teeSiirto(nappi.getX(), nappi.getY())) {
             nappi.getRuutu().setText(kayttis.getLogic().kenenVuoro().getMerkki().getMerkki());
-            System.out.println(kayttis.getLogic().getKirjanpito().tulostaSiirrot());
         }
-        
-        if(!kayttis.getLogic().jatkuukoPeli()){
+
+        if (!kayttis.getLogic().jatkuukoPeli()) {
             kayttis.lopetaPeli();
         }
     }

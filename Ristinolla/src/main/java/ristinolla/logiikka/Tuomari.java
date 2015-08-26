@@ -17,7 +17,7 @@ public class Tuomari {
         return !(onkoViisiPerakkainVaakatasossa() || onkoViisiPerakkainPystytasossa() || onkoViisiPerakkainYlaviistoon() || onkoViisiPerakkainAlaviistoon());
     }
 
-    public boolean onkoViisiPerakkainVaakatasossa() {
+    private boolean onkoViisiPerakkainVaakatasossa() {
         for (int i = 0; i < ruudukko.getSivunPituus(); ++i) {
             int montaPerakkain = 0;
             Pelimerkki merkki = null;
@@ -42,7 +42,7 @@ public class Tuomari {
         return false;
     }
 
-    public boolean onkoViisiPerakkainPystytasossa() {
+    private boolean onkoViisiPerakkainPystytasossa() {
         for (int i = 0; i < ruudukko.getSivunPituus(); ++i) {
             int montaPerakkain = 0;
             Pelimerkki merkki = null;
@@ -67,7 +67,7 @@ public class Tuomari {
         return false;
     }
 
-    public boolean onkoViisiPerakkainYlaviistoon() {
+    private boolean onkoViisiPerakkainYlaviistoon() {
 
         for (int j = 4; j <= ruudukko.getSivunPituus(); j++) {
             int montaPerakkain = 0;
@@ -118,7 +118,7 @@ public class Tuomari {
         return false;
     }
 
-    public boolean onkoViisiPerakkainAlaviistoon() {
+    private boolean onkoViisiPerakkainAlaviistoon() {
 
         for (int j = 0; j < ruudukko.getSivunPituus() - 4; j++) {
             int montaPerakkain = 0;
@@ -148,8 +148,8 @@ public class Tuomari {
             Pelimerkki merkki = null;
             int c = i;
             for (int j = 0; j < ruudukko.getSivunPituus() - i; j++) {
-                
-                    if (kirjanpito.sisaltaakoPelimerkkia(c, j) && (merkki == null || merkki == kirjanpito.mikaMerkkiRuudussa(c, j))) {
+
+                if (kirjanpito.sisaltaakoPelimerkkia(c, j) && (merkki == null || merkki == kirjanpito.mikaMerkkiRuudussa(c, j))) {
                     merkki = kirjanpito.mikaMerkkiRuudussa(c, j);
                     montaPerakkain++;
                 } else if (kirjanpito.sisaltaakoPelimerkkia(c, j) && merkki != kirjanpito.mikaMerkkiRuudussa(c, j)) {
@@ -168,6 +168,3 @@ public class Tuomari {
         return false;
     }
 }
-
-
-

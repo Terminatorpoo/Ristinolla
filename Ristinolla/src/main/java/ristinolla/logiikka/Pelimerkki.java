@@ -1,13 +1,11 @@
-
 package ristinolla.logiikka;
 
 import java.util.Objects;
 
-
 public class Pelimerkki {
-    
+
     private String merkki;
-    
+
     public Pelimerkki(String merkki) {
         this.merkki = merkki;
     }
@@ -15,8 +13,6 @@ public class Pelimerkki {
     public String getMerkki() {
         return merkki;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -39,7 +35,5 @@ public class Pelimerkki {
         }
         return true;
     }
-    
-    
-    
+
 }
