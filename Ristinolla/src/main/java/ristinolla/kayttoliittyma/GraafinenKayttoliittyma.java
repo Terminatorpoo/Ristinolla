@@ -16,15 +16,15 @@ import ristinolla.logiikka.Ohjelmistologiikka;
 public class GraafinenKayttoliittyma implements Runnable {
 
     private JFrame frame;
-    private Ohjelmistologiikka logic;
+    private final Ohjelmistologiikka logic;
     private RuudukonKuuntelija kuuntelija1;
     private ValikkorivinKuuntelija kuuntelija2;
-    private int x;
-    private int y;
+    private Ruudukko ruudukko;
+    private int sivunPituus;
+
 
     public GraafinenKayttoliittyma(Ohjelmistologiikka logic) {
         this.logic = logic;
-
     }
 
     @Override
@@ -37,6 +37,7 @@ public class GraafinenKayttoliittyma implements Runnable {
         frame.setLayout(new BorderLayout());
 
         JPanel panel1 = new JPanel();
+
         luoRuudukko(panel1);
         JPanel panel2 = new JPanel();
         luoValikkorivi(panel2);
@@ -49,10 +50,10 @@ public class GraafinenKayttoliittyma implements Runnable {
     }
 
     private void luoRuudukko(Container container) {
-        GridLayout layout = new GridLayout(logic.getRuudukonSivunPituus(), logic.getRuudukonSivunPituus());
+        GridLayout layout = new GridLayout(sivunPituus, sivunPituus);
         container.setLayout(layout);
 
-        for (Nappi nappi : logic.getRuudukko().getNapit()) {
+        for (Nappi nappi : ruudukko.getNapit()) {
             container.add(nappi.getRuutu());
             this.kuuntelija1 = new RuudukonKuuntelija(this, nappi);
             nappi.getRuutu().addActionListener(kuuntelija1);
@@ -70,7 +71,6 @@ public class GraafinenKayttoliittyma implements Runnable {
         uusiPeli.addActionListener(kuuntelija2);
         container.add(uusiPeli);
         container.add(lopeta);
-
     }
 
     public JFrame getFrame() {
@@ -78,8 +78,9 @@ public class GraafinenKayttoliittyma implements Runnable {
     }
 
     public void kaynnista() {
-        logic.luoRuudukko(25);
-        logic.luoTuomari(logic.getKirjanpito(), logic.getRuudukko());
+        this.sivunPituus = 25;
+        this.ruudukko = new Ruudukko(sivunPituus);
+        logic.uusiPeli(sivunPituus);
         SwingUtilities.invokeLater(this);
 
     }
@@ -94,10 +95,7 @@ public class GraafinenKayttoliittyma implements Runnable {
 
     public void lopetaPeli() {
         System.out.println("Peli loppu. Voittaja on " + logic.kenenVuoro());
-
-        for (Nappi nappi : logic.getRuudukko().getNapit()) {
-            nappi.getRuutu().setEnabled(false);
-        }
+        ruudukko.jaadytaRuudukko();
     }
 
     public void suljeOhjelma() {
@@ -105,10 +103,9 @@ public class GraafinenKayttoliittyma implements Runnable {
     }
 
     void uusiPeli() {
-        logic.uusiPeli();
-        for (Nappi nappi : logic.getRuudukko().getNapit()) {
-            nappi.getRuutu().setEnabled(true);
-        }
+        logic.uusiPeli(25);
+        ruudukko.tyhjennaRuudukko();
+        ruudukko.sulataRUudukko();
 
     }
 

@@ -7,11 +7,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static ristinolla.logiikka.Pelimerkki.O;
+import static ristinolla.logiikka.Pelimerkki.X;
 
 
 public class TuomariTest {
-    Ohjelmistologiikka logic = new Ohjelmistologiikka();
-    
+    //Ohjelmistologiikka logic = new Ohjelmistologiikka();
+    Tuomari tuomari;
+    Kirjanpito kirjanpito;
     
     public TuomariTest() {
     }
@@ -26,8 +29,8 @@ public class TuomariTest {
     
     @Before
     public void setUp() {
-        logic.luoRuudukko(25);
-        logic.luoTuomari(logic.getKirjanpito(), logic.getRuudukko());
+        kirjanpito = new Kirjanpito();
+        tuomari = new Tuomari(kirjanpito, 25);
     }
     
     @After
@@ -41,12 +44,12 @@ public class TuomariTest {
          Koordinaatti c = new Koordinaatti (2, 0);
          Koordinaatti d = new Koordinaatti (3, 0);
          Koordinaatti e = new Koordinaatti (4, 0);
-         logic.getKirjanpito().annaSiirto(a, logic.getX());
-         logic.getKirjanpito().annaSiirto(b, logic.getX());
-         logic.getKirjanpito().annaSiirto(c, logic.getX());
-         logic.getKirjanpito().annaSiirto(d, logic.getX());
-         logic.getKirjanpito().annaSiirto(e, logic.getX());
-         assertEquals(false, logic.getTuomari().jatkuukoPeli());
+         kirjanpito.annaSiirto(a, X);
+         kirjanpito.annaSiirto(b, X);
+         kirjanpito.annaSiirto(c, X);
+         kirjanpito.annaSiirto(d, X);
+         kirjanpito.annaSiirto(e, X);
+         assertEquals(false, tuomari.jatkuukoPeli());
      }
      
      
@@ -58,12 +61,12 @@ public class TuomariTest {
          Koordinaatti c = new Koordinaatti (17, 19);
          Koordinaatti d = new Koordinaatti (16, 19);
          Koordinaatti e = new Koordinaatti (15, 19);
-         logic.getKirjanpito().annaSiirto(a, logic.getX());
-         logic.getKirjanpito().annaSiirto(b, logic.getX());
-         logic.getKirjanpito().annaSiirto(c, logic.getX());
-         logic.getKirjanpito().annaSiirto(d, logic.getX());
-         logic.getKirjanpito().annaSiirto(e, logic.getX());
-         assertEquals(false, logic.getTuomari().jatkuukoPeli());
+         kirjanpito.annaSiirto(a, X);
+         kirjanpito.annaSiirto(b, X);
+         kirjanpito.annaSiirto(c, X);
+         kirjanpito.annaSiirto(d, X);
+         kirjanpito.annaSiirto(e, X);
+         assertEquals(false, tuomari.jatkuukoPeli());
      }
      
      @Test
@@ -73,12 +76,12 @@ public class TuomariTest {
          Koordinaatti c = new Koordinaatti (0, 2);
          Koordinaatti d = new Koordinaatti (0, 3);
          Koordinaatti e = new Koordinaatti (0, 4);
-         logic.getKirjanpito().annaSiirto(a, logic.getX());
-         logic.getKirjanpito().annaSiirto(b, logic.getX());
-         logic.getKirjanpito().annaSiirto(c, logic.getX());
-         logic.getKirjanpito().annaSiirto(d, logic.getX());
-         logic.getKirjanpito().annaSiirto(e, logic.getX());
-         assertEquals(false, logic.getTuomari().jatkuukoPeli());
+         kirjanpito.annaSiirto(a, X);
+         kirjanpito.annaSiirto(b, X);
+         kirjanpito.annaSiirto(c, X);
+         kirjanpito.annaSiirto(d, X);
+         kirjanpito.annaSiirto(e, X);
+         assertEquals(false, tuomari.jatkuukoPeli());
      }
      
      @Test
@@ -88,12 +91,12 @@ public class TuomariTest {
          Koordinaatti c = new Koordinaatti (19, 17);
          Koordinaatti d = new Koordinaatti (19, 16);
          Koordinaatti e = new Koordinaatti (19, 15);
-         logic.getKirjanpito().annaSiirto(a, logic.getX());
-         logic.getKirjanpito().annaSiirto(b, logic.getX());
-         logic.getKirjanpito().annaSiirto(c, logic.getX());
-         logic.getKirjanpito().annaSiirto(d, logic.getX());
-         logic.getKirjanpito().annaSiirto(e, logic.getX());
-         assertEquals(false, logic.getTuomari().jatkuukoPeli());
+         kirjanpito.annaSiirto(a, X);
+         kirjanpito.annaSiirto(b, X);
+         kirjanpito.annaSiirto(c, X);
+         kirjanpito.annaSiirto(d, X);
+         kirjanpito.annaSiirto(e, X);
+         assertEquals(false, tuomari.jatkuukoPeli());
      }
      
      @Test
@@ -103,12 +106,12 @@ public class TuomariTest {
          Koordinaatti c = new Koordinaatti (17, 19);
          Koordinaatti d = new Koordinaatti (16, 19);
          Koordinaatti e = new Koordinaatti (15, 19);
-         logic.getKirjanpito().annaSiirto(a, logic.getX());
-         logic.getKirjanpito().annaSiirto(b, logic.getO());
-         logic.getKirjanpito().annaSiirto(c, logic.getX());
-         logic.getKirjanpito().annaSiirto(d, logic.getO());
-         logic.getKirjanpito().annaSiirto(e, logic.getX());
-         assertEquals(true, logic.getTuomari().jatkuukoPeli());
+         kirjanpito.annaSiirto(a, X);
+         kirjanpito.annaSiirto(b, O);
+         kirjanpito.annaSiirto(c, X);
+         kirjanpito.annaSiirto(d, O);
+         kirjanpito.annaSiirto(e, X);
+         assertEquals(true, tuomari.jatkuukoPeli());
      }
      
      @Test
@@ -118,12 +121,12 @@ public class TuomariTest {
          Koordinaatti c = new Koordinaatti (19, 17);
          Koordinaatti d = new Koordinaatti (19, 16);
          Koordinaatti e = new Koordinaatti (19, 15);
-         logic.getKirjanpito().annaSiirto(a, logic.getX());
-         logic.getKirjanpito().annaSiirto(b, logic.getX());
-         logic.getKirjanpito().annaSiirto(c, logic.getO());
-         logic.getKirjanpito().annaSiirto(d, logic.getO());
-         logic.getKirjanpito().annaSiirto(e, logic.getX());
-         assertEquals(true, logic.getTuomari().jatkuukoPeli());
+         kirjanpito.annaSiirto(a, X);
+         kirjanpito.annaSiirto(b, X);
+         kirjanpito.annaSiirto(c, O);
+         kirjanpito.annaSiirto(d, O);
+         kirjanpito.annaSiirto(e, X);
+         assertEquals(true, tuomari.jatkuukoPeli());
      }
      
      @Test
@@ -133,12 +136,12 @@ public class TuomariTest {
          Koordinaatti c = new Koordinaatti(2, 17);
          Koordinaatti d = new Koordinaatti(3, 16);
          Koordinaatti e = new Koordinaatti(4, 15);
-         logic.getKirjanpito().annaSiirto(a, logic.getX());
-         logic.getKirjanpito().annaSiirto(b, logic.getX());
-         logic.getKirjanpito().annaSiirto(c, logic.getX());
-         logic.getKirjanpito().annaSiirto(d, logic.getX());
-         logic.getKirjanpito().annaSiirto(e, logic.getX());
-         assertEquals(false, logic.getTuomari().jatkuukoPeli());
+         kirjanpito.annaSiirto(a, X);
+         kirjanpito.annaSiirto(b, X);
+         kirjanpito.annaSiirto(c, X);
+         kirjanpito.annaSiirto(d, X);
+         kirjanpito.annaSiirto(e, X);
+         assertEquals(false, tuomari.jatkuukoPeli());
      }
      
      @Test public void viidensuoraVasemmaltaKeskeltaYlaviistoon() {
@@ -147,12 +150,12 @@ public class TuomariTest {
          Koordinaatti c = new Koordinaatti(2, 8);
          Koordinaatti d = new Koordinaatti(3, 7);
          Koordinaatti e = new Koordinaatti(4, 6);
-         logic.getKirjanpito().annaSiirto(a, logic.getX());
-         logic.getKirjanpito().annaSiirto(b, logic.getX());
-         logic.getKirjanpito().annaSiirto(c, logic.getX());
-         logic.getKirjanpito().annaSiirto(d, logic.getX());
-         logic.getKirjanpito().annaSiirto(e, logic.getX());
-         assertEquals(false, logic.getTuomari().jatkuukoPeli());
+         kirjanpito.annaSiirto(a, X);
+         kirjanpito.annaSiirto(b, X);
+         kirjanpito.annaSiirto(c, X);
+         kirjanpito.annaSiirto(d, X);
+         kirjanpito.annaSiirto(e, X);
+         assertEquals(false, tuomari.jatkuukoPeli());
      }
      
      @Test
@@ -162,12 +165,12 @@ public class TuomariTest {
          Koordinaatti c = new Koordinaatti(12, 17);
          Koordinaatti d = new Koordinaatti(13, 16);
          Koordinaatti e = new Koordinaatti(14, 15);
-         logic.getKirjanpito().annaSiirto(a, logic.getX());
-         logic.getKirjanpito().annaSiirto(b, logic.getX());
-         logic.getKirjanpito().annaSiirto(c, logic.getX());
-         logic.getKirjanpito().annaSiirto(d, logic.getX());
-         logic.getKirjanpito().annaSiirto(e, logic.getX());
-         assertEquals(false, logic.getTuomari().jatkuukoPeli());
+         kirjanpito.annaSiirto(a, X);
+         kirjanpito.annaSiirto(b, X);
+         kirjanpito.annaSiirto(c, X);
+         kirjanpito.annaSiirto(d, X);
+         kirjanpito.annaSiirto(e, X);
+         assertEquals(false, tuomari.jatkuukoPeli());
      }
      
      @Test
@@ -177,12 +180,12 @@ public class TuomariTest {
          Koordinaatti c = new Koordinaatti(2, 2);
          Koordinaatti d = new Koordinaatti(3, 3);
          Koordinaatti e = new Koordinaatti(4, 4);
-         logic.getKirjanpito().annaSiirto(a, logic.getX());
-         logic.getKirjanpito().annaSiirto(b, logic.getX());
-         logic.getKirjanpito().annaSiirto(c, logic.getX());
-         logic.getKirjanpito().annaSiirto(d, logic.getX());
-         logic.getKirjanpito().annaSiirto(e, logic.getX());
-         assertEquals(false, logic.getTuomari().jatkuukoPeli());
+         kirjanpito.annaSiirto(a, X);
+         kirjanpito.annaSiirto(b, X);
+         kirjanpito.annaSiirto(c, X);
+         kirjanpito.annaSiirto(d, X);
+         kirjanpito.annaSiirto(e, X);
+         assertEquals(false, tuomari.jatkuukoPeli());
      }
      
      @Test
@@ -192,12 +195,12 @@ public class TuomariTest {
          Koordinaatti c = new Koordinaatti(2, 12);
          Koordinaatti d = new Koordinaatti(3, 13);
          Koordinaatti e = new Koordinaatti(4, 14);
-         logic.getKirjanpito().annaSiirto(a, logic.getX());
-         logic.getKirjanpito().annaSiirto(b, logic.getX());
-         logic.getKirjanpito().annaSiirto(c, logic.getX());
-         logic.getKirjanpito().annaSiirto(d, logic.getX());
-         logic.getKirjanpito().annaSiirto(e, logic.getX());
-         assertEquals(false, logic.getTuomari().jatkuukoPeli());
+         kirjanpito.annaSiirto(a, X);
+         kirjanpito.annaSiirto(b, X);
+         kirjanpito.annaSiirto(c, X);
+         kirjanpito.annaSiirto(d, X);
+         kirjanpito.annaSiirto(e, X);
+         assertEquals(false, tuomari.jatkuukoPeli());
      }
      
      @Test
@@ -207,12 +210,12 @@ public class TuomariTest {
          Koordinaatti c = new Koordinaatti(11, 2);
          Koordinaatti d = new Koordinaatti(12, 3);
          Koordinaatti e = new Koordinaatti(13, 4);
-         logic.getKirjanpito().annaSiirto(a, logic.getO());
-         logic.getKirjanpito().annaSiirto(b, logic.getO());
-         logic.getKirjanpito().annaSiirto(c, logic.getO());
-         logic.getKirjanpito().annaSiirto(d, logic.getO());
-         logic.getKirjanpito().annaSiirto(e, logic.getO());
-         assertEquals(false, logic.getTuomari().jatkuukoPeli());
+         kirjanpito.annaSiirto(a, O);
+         kirjanpito.annaSiirto(b, O);
+         kirjanpito.annaSiirto(c, O);
+         kirjanpito.annaSiirto(d, O);
+         kirjanpito.annaSiirto(e, O);
+         assertEquals(false, tuomari.jatkuukoPeli());
      }
      
      

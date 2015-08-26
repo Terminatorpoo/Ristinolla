@@ -31,33 +31,26 @@ public class OhjelmistologiikkaTest {
     public void tearDown() {
     }
 
-    
-    
-     @Test
-     public void vaihtuukoVuoro() {
-         logics.vuoroVaihtuu();
-         assertEquals(false, logics.getPelaaja1().isOnkoMinunVuoro());
-     }
      
      @Test
      public void kenenVuoro() {
          assertEquals(logics.getPelaaja1(), logics.kenenVuoro());
      }
      
-     @Test
-     public void laitonSiirto() {
-         Koordinaatti ko = new Koordinaatti(1, 1);
-         logics.getKirjanpito().annaSiirto(ko, logics.getX());
-         System.out.println(ko);
-         assertEquals(false, logics.onkoSiirtoLaillinen(1, 1));
-     }
-     
-     @Test
-     public void laillinenSiirto() {
-         Koordinaatti ko = new Koordinaatti(1, 1);
-         logics.getKirjanpito().annaSiirto(ko, logics.getX());
-         assertEquals(true, logics.onkoSiirtoLaillinen(2, 2));
-     }
+//     @Test
+//     public void laitonSiirto() {
+//         Koordinaatti ko = new Koordinaatti(1, 1);
+//         logics.getKirjanpito().annaSiirto(ko, logics.getX());
+//         System.out.println(ko);
+//         assertEquals(false, logics.onkoSiirtoLaillinen(1, 1));
+//     }
+//     
+//     @Test
+//     public void laillinenSiirto() {
+//         Koordinaatti ko = new Koordinaatti(1, 1);
+//         logics.getKirjanpito().annaSiirto(ko, logics.getX());
+//         assertEquals(true, logics.onkoSiirtoLaillinen(2, 2));
+//     }
      
      @Test
      public void siirtoTallentuuKirjanpitoon(){

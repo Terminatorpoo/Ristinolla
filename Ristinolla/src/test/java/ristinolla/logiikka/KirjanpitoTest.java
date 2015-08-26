@@ -33,14 +33,14 @@ public class KirjanpitoTest {
     @Test
     public void antaakoSiirrotOikein() {
         
-        kirjanpito.annaSiirto(new Koordinaatti(1, 6), new Pelimerkki("X"));
+        kirjanpito.annaSiirto(new Koordinaatti(1, 6), Pelimerkki.X);
         assertEquals(true, kirjanpito.getSiirrot().keySet().contains(new Koordinaatti(1, 6)));
     }
     
     @Test
     public void sisaltaaAvaimen(){
         Koordinaatti xy = new Koordinaatti (1, 1);
-        kirjanpito.annaSiirto(xy, new Pelimerkki("X"));
+        kirjanpito.annaSiirto(xy, Pelimerkki.X);
         assertEquals(true, kirjanpito.sisaltaakoPelimerkkia(1, 1));
         
     }
@@ -48,7 +48,7 @@ public class KirjanpitoTest {
     @Test
     public void eiSisallaAvainta(){
         Koordinaatti xy = new Koordinaatti (1, 1);
-        kirjanpito.annaSiirto(xy, new Pelimerkki("X"));
+        kirjanpito.annaSiirto(xy, Pelimerkki.X);
         assertEquals(false, kirjanpito.sisaltaakoPelimerkkia(2, 2));
     }
 }

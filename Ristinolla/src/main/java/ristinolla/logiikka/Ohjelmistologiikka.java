@@ -1,45 +1,30 @@
 package ristinolla.logiikka;
 
-import ristinolla.kayttoliittyma.Ruudukko;
-
 public class Ohjelmistologiikka {
-
-    private Pelimerkki X;
-    private Pelimerkki O;
     private Pelaaja pelaaja1;
     private Pelaaja pelaaja2;
-    private Ruudukko ruudukko;
     private boolean jatkuukoPeli;
     private Kirjanpito kirjanpito;
     private int ruudukonSivunPituus;
-
     private Tuomari tuomari;
 
     public Ohjelmistologiikka() {
-        this.X = new Pelimerkki("X");
-        this.O = new Pelimerkki("O");
-        this.pelaaja1 = new Pelaaja("pelaaja1", X, true);
-        this.pelaaja2 = new Pelaaja("pelaaja2", O, false);
+        this.pelaaja1 = new Pelaaja("pelaaja1", Pelimerkki.X, true);
+        this.pelaaja2 = new Pelaaja("pelaaja2", Pelimerkki.O, false);
         this.jatkuukoPeli = true;
         this.kirjanpito = new Kirjanpito();
         this.ruudukonSivunPituus = 0;
     }
-
-    public void luoTuomari(Kirjanpito kirjanpito, Ruudukko ruudukko) {
-        this.tuomari = new Tuomari(kirjanpito, ruudukko);
-    }
-
-    public void luoRuudukko(int sivunPituus) {
+    
+    public void uusiPeli(int sivunPituus) {
         ruudukonSivunPituus = sivunPituus;
-        this.ruudukko = new Ruudukko(sivunPituus);
-    }
-
-    public void uusiPeli() {
+        
+        this.tuomari = new Tuomari(kirjanpito, ruudukonSivunPituus);
         kirjanpito.tyhjennaKirjanpito();
-        ruudukko.tyhjennaRuudukko();
+        
     }
 
-    public void vuoroVaihtuu() {
+    private void vuoroVaihtuu() {
         pelaaja1.vuoroVaihtuu();
         pelaaja2.vuoroVaihtuu();
     }
@@ -67,26 +52,19 @@ public class Ohjelmistologiikka {
         return tuomari.jatkuukoPeli();
     }
 
-    public boolean onkoSiirtoLaillinen(int xKoordinaatti, int yKoordinaatti) {
+    private boolean onkoSiirtoLaillinen(int xKoordinaatti, int yKoordinaatti) {
         return !kirjanpito.sisaltaakoPelimerkkia(xKoordinaatti, yKoordinaatti);
     }
 
-    public Tuomari getTuomari() {
-        return tuomari;
-    }
-
-    public int getRuudukonSivunPituus() {
-        return ruudukonSivunPituus;
-    }
-
+    
 //    GetX() ja Get0() metodit testejä varten (getX() ja getY() metodit löytyvät myös pelaaja luokasta).
-    public Pelimerkki getX() {
-        return X;
-    }
-
-    public Pelimerkki getO() {
-        return O;
-    }
+//    public Pelimerkki getX() {
+//        return X;
+//    }
+//
+//    public Pelimerkki getO() {
+//        return O;
+//    }
 
     public Pelaaja getPelaaja1() {
         return pelaaja1;
@@ -98,10 +76,6 @@ public class Ohjelmistologiikka {
 
     public Kirjanpito getKirjanpito() {
         return kirjanpito;
-    }
-
-    public Ruudukko getRuudukko() {
-        return ruudukko;
     }
 
 }

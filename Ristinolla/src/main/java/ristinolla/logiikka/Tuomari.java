@@ -1,15 +1,13 @@
 package ristinolla.logiikka;
 
-import ristinolla.kayttoliittyma.Ruudukko;
-
 public class Tuomari {
 
     private Kirjanpito kirjanpito;
-    private Ruudukko ruudukko;
+    private int sivunPituus;
 
-    public Tuomari(Kirjanpito kirjanpito, Ruudukko ruudukko) {
+    public Tuomari(Kirjanpito kirjanpito, int sivunPituus) {
         this.kirjanpito = kirjanpito;
-        this.ruudukko = ruudukko;
+        this.sivunPituus = sivunPituus;
 
     }
 
@@ -18,11 +16,11 @@ public class Tuomari {
     }
 
     private boolean onkoViisiPerakkainVaakatasossa() {
-        for (int i = 0; i < ruudukko.getSivunPituus(); ++i) {
+        for (int i = 0; i < sivunPituus; ++i) {
             int montaPerakkain = 0;
             Pelimerkki merkki = null;
 
-            for (int j = 0; j < ruudukko.getSivunPituus(); j++) {
+            for (int j = 0; j < sivunPituus; j++) {
                 if (kirjanpito.sisaltaakoPelimerkkia(j, i) && (merkki == null || merkki == kirjanpito.mikaMerkkiRuudussa(j, i))) {
                     merkki = kirjanpito.mikaMerkkiRuudussa(j, i);
                     montaPerakkain++;
@@ -43,11 +41,11 @@ public class Tuomari {
     }
 
     private boolean onkoViisiPerakkainPystytasossa() {
-        for (int i = 0; i < ruudukko.getSivunPituus(); ++i) {
+        for (int i = 0; i < sivunPituus; ++i) {
             int montaPerakkain = 0;
             Pelimerkki merkki = null;
 
-            for (int j = 0; j < ruudukko.getSivunPituus(); j++) {
+            for (int j = 0; j < sivunPituus; j++) {
                 if (kirjanpito.sisaltaakoPelimerkkia(i, j) && (merkki == null || merkki == kirjanpito.mikaMerkkiRuudussa(i, j))) {
                     merkki = kirjanpito.mikaMerkkiRuudussa(i, j);
                     montaPerakkain++;
@@ -69,7 +67,7 @@ public class Tuomari {
 
     private boolean onkoViisiPerakkainYlaviistoon() {
 
-        for (int j = 4; j <= ruudukko.getSivunPituus(); j++) {
+        for (int j = 4; j <= sivunPituus; j++) {
             int montaPerakkain = 0;
             Pelimerkki merkki = null;
             int c = j;
@@ -91,12 +89,12 @@ public class Tuomari {
             }
         }
 
-        for (int i = 0; i <= ruudukko.getSivunPituus() - 4; i++) {
+        for (int i = 0; i <= sivunPituus - 4; i++) {
 
             int montaPerakkain = 0;
             Pelimerkki merkki = null;
             int c = i;
-            for (int j = ruudukko.getSivunPituus(); j >= i; j--) {
+            for (int j = sivunPituus; j >= i; j--) {
 
                 if (kirjanpito.sisaltaakoPelimerkkia(c, j) && (merkki == null || merkki == kirjanpito.mikaMerkkiRuudussa(c, j))) {
                     merkki = kirjanpito.mikaMerkkiRuudussa(c, j);
@@ -120,11 +118,11 @@ public class Tuomari {
 
     private boolean onkoViisiPerakkainAlaviistoon() {
 
-        for (int j = 0; j < ruudukko.getSivunPituus() - 4; j++) {
+        for (int j = 0; j < sivunPituus - 4; j++) {
             int montaPerakkain = 0;
             Pelimerkki merkki = null;
             int c = j;
-            for (int i = 0; i < ruudukko.getSivunPituus() - j; i++) {
+            for (int i = 0; i < sivunPituus - j; i++) {
 
                 if (kirjanpito.sisaltaakoPelimerkkia(i, c) && (merkki == null || merkki == kirjanpito.mikaMerkkiRuudussa(i, c))) {
                     merkki = kirjanpito.mikaMerkkiRuudussa(i, c);
@@ -143,11 +141,11 @@ public class Tuomari {
             }
         }
 
-        for (int i = 1; i < ruudukko.getSivunPituus(); i++) {
+        for (int i = 1; i < sivunPituus; i++) {
             int montaPerakkain = 0;
             Pelimerkki merkki = null;
             int c = i;
-            for (int j = 0; j < ruudukko.getSivunPituus() - i; j++) {
+            for (int j = 0; j < sivunPituus - i; j++) {
 
                 if (kirjanpito.sisaltaakoPelimerkkia(c, j) && (merkki == null || merkki == kirjanpito.mikaMerkkiRuudussa(c, j))) {
                     merkki = kirjanpito.mikaMerkkiRuudussa(c, j);
