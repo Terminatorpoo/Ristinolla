@@ -29,3 +29,5 @@
 **ti 25.08.2015 6h**. Tuomariluokka ei toiminukaan kunnolla, kirjoitin sen käytännössä uusiksi. Lisäsin yläpalkkiin 'uusi peli' napille toiminnallisuuden.
 
 **to 26.08.2015 5h**, Eräiden "public" metodien muuttaminen privateksi, luokkien siistimistä ja ohjelman koodin viimeistelemistä.
+
+**31.09.2015 6h**, Sekvenssikaavioiden luominen, luokkakaavion pävittäminen sekä tekstikentän lisääminen graafiseen käyttöliittymään.
