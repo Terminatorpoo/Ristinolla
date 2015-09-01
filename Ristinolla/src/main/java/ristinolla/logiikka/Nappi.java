@@ -2,11 +2,15 @@ package ristinolla.logiikka;
 
 import javax.swing.JButton;
 
+/**
+ * Luokka yhdistää JButtonin tiettyyn koordinaattiin.
+ */
 public class Nappi {
 
     JButton ruutu;
     Koordinaatti koordinaatti;
 
+    
     public Nappi(JButton ruutu, Koordinaatti koordinaatti) {
         this.ruutu = ruutu;
         this.koordinaatti = koordinaatti;
@@ -28,6 +32,10 @@ public class Nappi {
         return ruutu;
     }
 
+    /**
+     *Metodi muuttaa JButtonin sisältämää tekstiä
+     * @param teksti JButtonin haluttu teksti
+     */
     public void muutaNapinTekstia(String teksti) {
         ruutu.setText(teksti);
     }

@@ -4,12 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
+/**
+ * Luokka tarkkailee valikkorivin nappeihin kohdistuvia painalluksia.
+ */
 public class ValikkorivinKuuntelija implements ActionListener {
 
     private GraafinenKayttoliittyma kayttis;
     private JButton uusiPeli;
     private JButton lopeta;
 
+    
     public ValikkorivinKuuntelija(GraafinenKayttoliittyma kayttis, JButton lopeta, JButton uusiPeli) {
         this.kayttis = kayttis;
         this.uusiPeli = uusiPeli;

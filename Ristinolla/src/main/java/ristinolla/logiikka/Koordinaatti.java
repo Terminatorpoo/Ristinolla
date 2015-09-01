@@ -1,19 +1,25 @@
 package ristinolla.logiikka;
 
+/**
+ * Luokka määrittää mitä tarkoitetaan koordinaatilla.
+ */
 public class Koordinaatti {
 
     private int X;
     private int Y;
 
+    
     public Koordinaatti(int xKoordinaatti, int yKoordinaatti) {
         this.X = xKoordinaatti;
         this.Y = yKoordinaatti;
     }
 
+    
     public int getX() {
         return X;
     }
 
+    
     public int getY() {
         return Y;
     }

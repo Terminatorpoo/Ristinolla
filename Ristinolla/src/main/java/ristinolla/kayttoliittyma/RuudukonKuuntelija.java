@@ -8,11 +8,15 @@ import javax.swing.JTextField;
 import ristinolla.logiikka.Nappi;
 import ristinolla.logiikka.Ohjelmistologiikka;
 
+/**
+ * Luokka tarkkailee ruudukon nappien painalluksia
+ */
 public class RuudukonKuuntelija implements ActionListener {
 
     private Nappi nappi;
     private GraafinenKayttoliittyma kayttis;
 
+    
     public RuudukonKuuntelija(GraafinenKayttoliittyma kayttis, Nappi nappi) {
         this.kayttis = kayttis;
         this.nappi = nappi;
@@ -22,6 +26,7 @@ public class RuudukonKuuntelija implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (kayttis.teeSiirto(nappi.getX(), nappi.getY())) {
             nappi.getRuutu().setText(kayttis.getLogic().kenenVuoro().getMerkki().toString());
+            kayttis.muutaTekstiRivia(kayttis.getLogic().kenenVuoro() + ":n vuoro");
         }
 
         if (!kayttis.getLogic().jatkuukoPeli()) {

@@ -1,16 +1,25 @@
 package ristinolla.logiikka;
 
+/**
+ * Luokkan tehtävä on jokaisen siirron jälkeen tarkistaa, onko samaa pelimerkkiä
+ * viisi peräkkäin.
+ */
 public class Tuomari {
 
     private Kirjanpito kirjanpito;
     private int sivunPituus;
 
+    
     public Tuomari(Kirjanpito kirjanpito, int sivunPituus) {
         this.kirjanpito = kirjanpito;
         this.sivunPituus = sivunPituus;
 
     }
 
+    /**
+     *Metodi kertoo jatkuuko peli eli onko viittä peräkkäistä pelimerkkiä saavutettu
+     * @return jatkuuko peli
+     */
     public boolean jatkuukoPeli() {
         return !(onkoViisiPerakkainVaakatasossa() || onkoViisiPerakkainPystytasossa() || onkoViisiPerakkainYlaviistoon() || onkoViisiPerakkainAlaviistoon());
     }

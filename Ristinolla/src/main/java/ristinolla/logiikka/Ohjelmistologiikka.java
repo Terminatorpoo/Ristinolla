@@ -1,5 +1,8 @@
 package ristinolla.logiikka;
 
+/**
+ *Luokka tarjoaa useita ristinolla-peliin tarvittavia metodeita.
+ */
 public class Ohjelmistologiikka {
     private Pelaaja pelaaja1;
     private Pelaaja pelaaja2;
@@ -8,6 +11,7 @@ public class Ohjelmistologiikka {
     private int ruudukonSivunPituus;
     private Tuomari tuomari;
 
+    
     public Ohjelmistologiikka() {
         this.pelaaja1 = new Pelaaja("pelaaja1", Pelimerkki.X, true);
         this.pelaaja2 = new Pelaaja("pelaaja2", Pelimerkki.O, false);
@@ -16,6 +20,10 @@ public class Ohjelmistologiikka {
         this.ruudukonSivunPituus = 0;
     }
     
+    /**
+     *Metodi luo uuden pelin, ottaen huomioon parametrina annetun sivun pituuden.
+     * @param sivunPituus 
+     */
     public void uusiPeli(int sivunPituus) {
         ruudukonSivunPituus = sivunPituus;
         
@@ -29,6 +37,10 @@ public class Ohjelmistologiikka {
         pelaaja2.vuoroVaihtuu();
     }
 
+    /**
+     *
+     * @return kenen vuoro tehdä seuraava siirto.
+     */
     public Pelaaja kenenVuoro() {
         if (pelaaja1.isOnkoMinunVuoro()) {
             return pelaaja1;
@@ -36,10 +48,31 @@ public class Ohjelmistologiikka {
             return pelaaja2;
         }
     }
+    
+    /**
+     *
+     * @return kenen vuoro ei ole tehdä seuraavaa siirtoa.
+     */
+    public Pelaaja kenenVuoroEiOle() {
+        if (pelaaja1.isOnkoMinunVuoro()) {
+            return pelaaja2;
+        } else {
+            return pelaaja1;
+        }
+    }
 
+    /**
+     *Metodi tarkistaa onko parametreissa ehdotettu siirto laillinen jonka jälkeen
+     * tehdään kyseinen siirto (kunhan se on laillinen), annetaan siirto kirjanpidolle
+     * ja vaihdetaan vuoro.
+     * 
+     * @param pelaaja kenen vuoro
+     * @param xKoordinaatti siirroon X koordinaatti
+     * @param yKoordinaatti siirron Y koordinaatti
+     * @return Onnistuiko siirto
+     */
     public boolean teeSiirto(Pelaaja pelaaja, int xKoordinaatti, int yKoordinaatti) {
         if (!onkoSiirtoLaillinen(xKoordinaatti, yKoordinaatti)) {
-            System.out.println("Laiton siirto!");
             return false;
         }
         Koordinaatti koordinaatti = new Koordinaatti(xKoordinaatti, yKoordinaatti);
@@ -48,6 +81,10 @@ public class Ohjelmistologiikka {
         return true;
     }
 
+    /**
+     *
+     * @return jatkuuko peli
+     */
     public boolean jatkuukoPeli() {
         return tuomari.jatkuukoPeli();
     }
@@ -66,14 +103,18 @@ public class Ohjelmistologiikka {
 //        return O;
 //    }
 
+    
+    
     public Pelaaja getPelaaja1() {
         return pelaaja1;
     }
 
+    
     public Pelaaja getPelaaja2() {
         return pelaaja2;
     }
 
+    
     public Kirjanpito getKirjanpito() {
         return kirjanpito;
     }
